@@ -1,0 +1,44 @@
+<div class="container">
+
+    <form class="form-control" #loginFormRef="ngForm" novalidate #loginform="ngForm" (ngSubmit)="onSubmit(loginform.value)">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" #emailRef="ngModel" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                name="email" required placeholder="Enter email" ngModel>
+            <div *ngIf="emailRef.errors && (emailRef.touched || emailRef.dirty)">
+                <div [hidden]="!emailRef.errors.required" class="alert alert-danger">
+                    Please enter your email
+                </div>
+                <div [hidden]="!emailRef.errors.pattern" class="alert alert-danger">
+                    Email must be of the form example@example.com
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #passwordRef="ngModel" class="form-control" id="password" required minlength="8" name="password" placeholder="Password"
+                ngModel>
+            <div *ngIf="passwordRef.errors && (passwordRef.touched || passwordRef.dirty)">
+                <div [hidden]="!passwordRef.errors.required" class="alert alert-danger">
+                    Please enter your password
+                </div>
+                <div [hidden]="!passwordRef.errors.minlength" class="alert alert-danger">
+                    Password Should be more than 8 characters
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="displayLoginError" class="alert alert-danger">
+            Wrong Email and Password combination
+        </div>
+        <button type="submit" [disabled]="!loginFormRef.form.valid" class="btn btn-primary">Log In</button>
+    </form>
+
+
+    <br>
+    <a class="btn btn-info" *ngIf="displayLoginLink" routerLink="/login">LoginModule</a>
+    <a class="btn btn-info" *ngIf="displayRegisterLink" routerLink="/register">RegisterModule</a>
+    <a class="btn btn-info" *ngIf="displayDashboardLink" routerLink="/dashboard">DashboardModule</a>
+
+
+</div>

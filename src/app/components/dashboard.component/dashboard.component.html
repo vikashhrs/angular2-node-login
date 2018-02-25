@@ -1,0 +1,12 @@
+<div class="jumbotron">
+    <h1>Dashboard</h1>
+
+    <p *ngIf="user"> You are {{user.name}}, your email is {{user.email}}, our system has {{user.phone}} as your number in our system
+        and speaking of password you better know it. Thanks !</p>
+
+    <br >
+    <a class="btn btn-info" *ngIf="!user" routerLink="/login">LoginModule</a>
+    <a class="btn btn-info" *ngIf="!user" routerLink="/register">RegisterModule</a>
+    <a class="btn btn-info" *ngIf="user" routerLink="/home">HomeModule</a>
+    <a class="btn btn-info" *ngIf="user"  (click)="logOut()">Log Out</a>
+</div>

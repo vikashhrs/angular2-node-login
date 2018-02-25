@@ -1,0 +1,68 @@
+<div class="container">
+    <form novalidate #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm.value)">
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input #nameRef="ngModel" type="text" class="form-control" id="name" required name="name" placeholder="Enter name" ngModel>
+            <div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger">
+                Please your name!
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" #emailRef="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" id="email"
+                required name="email" placeholder="Enter email" ngModel>
+            <div *ngIf="emailRef.errors && (emailRef.touched || emailRef.dirty)">
+                <div [hidden]="!emailRef.errors.required" class="alert alert-danger">
+                    Please enter your email
+                </div>
+                <div [hidden]="!emailRef.errors.pattern" class="alert alert-danger">
+                    Email must be of the form example@example.com
+                </div>
+            </div>
+            <div *ngIf="emailExistsError" class"alert alert-danger">
+                Email already exists
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="number">Phome Number</label>
+            <input type="text" #phoneRef="ngModel" pattern="^[1-9][0-9]{9}$" class="form-control" id="number" required maxlength="10"
+                minlength="10" name="phone" placeholder="Enter your Number" ngModel>
+            <div *ngIf="phoneRef.errors && (phoneRef.touched || phoneRef.dirty)">
+                <div [hidden]="!phoneRef.errors.required" class="alert alert-danger">
+                    Please enter your phone number
+                </div>
+                <div [hidden]="!phoneRef.errors.minlength " class="alert alert-danger">
+                    Phone number Should be of 10 numbers
+                </div>
+                <div [hidden]="!phoneRef.errors.maxlength" class="alert alert-danger">
+                    Phone number Should be of 10 numbers
+                </div>
+
+                <div [hidden]="!phoneRef.errors.pattern" class="alert alert-danger">
+                    Please enters numbers only
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #passwordRef="ngModel" class="form-control" id="password" required minlength="8" name="password" placeholder="Enter Password"
+                ngModel>
+            <div *ngIf="passwordRef.errors && (passwordRef.touched || passwordRef.dirty)">
+                <div [hidden]="!passwordRef.errors.required" class="alert alert-danger">
+                    Please enter your password
+                </div>
+                <div [hidden]="!passwordRef.errors.minlength" class="alert alert-danger">
+                    Password Should be more than 8 characters
+                </div>
+
+            </div>
+        </div>
+        <button type="submit" [disabled]="!registrationForm.form.valid" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br />
+    <a class="btn btn-info" routerLink="/login">LoginModule</a>
+    
+</div>
