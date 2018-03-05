@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { AuthenticationService } from './../../services/authentication.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthenticationService } from './../../services/authentication.service';
 export class RegistrationComponent {
 
   public emailExistsError : boolean;
-  constructor(private _authService: AuthenticationService) {
+  constructor(private _authService: AuthenticationService, private _router : Router) {
 
   }
 
@@ -31,6 +31,7 @@ export class RegistrationComponent {
 
     this._authService.registerUser(user).subscribe(response => {
       console.log(response);
+      this._router.navigate(['/login'])
     }, error => {
       this.emailExistsError = true;
       console.log(error)
