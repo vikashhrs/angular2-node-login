@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
 
   private _user : User;
 
-  private displayDashboardLink : boolean;
-  private displayRegisterLink : boolean;
-  private displayLoginLink: boolean; 
+  public displayDashboardLink : boolean;
+  public displayRegisterLink : boolean;
+  public displayLoginLink: boolean; 
 
   constructor(private _authService: AuthenticationService) {
 

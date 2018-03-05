@@ -12,11 +12,11 @@ import { AuthenticationService } from './../../services/authentication.service'
 export class LoginComponent implements OnInit {
   
 
-  private displayDashboardLink : boolean;
-  private displayRegisterLink : boolean;
-  private displayLoginLink: boolean;
+  public displayDashboardLink : boolean;
+  public displayRegisterLink : boolean;
+  public displayLoginLink: boolean;
 
-  private displayLoginError : boolean;
+  public displayLoginError : boolean;
 
   constructor(private _authService : AuthenticationService, private _router : Router){
     

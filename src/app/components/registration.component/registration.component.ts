@@ -12,7 +12,7 @@ import { AuthenticationService } from './../../services/authentication.service';
 })
 export class RegistrationComponent {
 
-  private emailExistsError : boolean;
+  public emailExistsError : boolean;
   constructor(private _authService: AuthenticationService) {
 
   }

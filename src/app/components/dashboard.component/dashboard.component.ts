@@ -9,7 +9,7 @@ import { AuthenticationService } from './../../services/authentication.service';
   providers : [ AuthenticationService]
 })
 export class DashboardComponent implements OnInit {
-  private user : any;
+  public user : any;
   constructor(private _authService : AuthenticationService){
 
   }
